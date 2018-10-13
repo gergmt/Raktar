@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Raktar
 {
@@ -32,6 +33,7 @@ namespace Raktar
             Console.WriteLine("3.Létrehozás");
             Console.WriteLine("4.Keresés");
             int valasztas = int.Parse(Console.ReadLine());
+            string[] file = File.ReadAllLines("adatok.csv");
         }
     }
 }
