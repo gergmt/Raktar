@@ -1,0 +1,15 @@
+@startuml
+start
+if (1) then (igen)
+    :Törlés;
+elseif (2) then (igen)
+    :Módosítás;
+elseif (3) then (igen)
+    :Létrehozás;
+elseif (4) then (igen)
+    :Keresés;
+else(semmi)
+    :Hibaüzenet;
+endif
+stop
+@enduml
