@@ -13,14 +13,17 @@ namespace Raktar
         {
 
         }
+
         static void Modositas()
         {
 
         }
+
         static void Letrehozas()
         {
 
         }
+<<<<<<< Updated upstream
         static void Listázás(string fajl[])
         {
             for (int i = 0; i <fajl.Length ; i++)
@@ -28,16 +31,23 @@ namespace Raktar
                 Console.WriteLine(fajl[i]);
             }
         }
+=======
+
+>>>>>>> Stashed changes
         static void Kereses(ref string[] file)
         {
             for (int i = 0; i < file.Length; i++)
             {
+                Console.Clear();
                 Console.WriteLine("Kérem írja be a keresendő tárgy nevét");
                 string targyNev = Console.ReadLine();
+
             }
         }
+
         static void Main(string[] args)
         {
+            start:
             Console.WriteLine("Kérem üsse be a parancs kódját");
             Console.WriteLine("1. Törlés");
             Console.WriteLine("2. Módosítás");
@@ -61,14 +71,17 @@ namespace Raktar
                     break;
                 case 4:
                     Kereses(ref file);
+<<<<<<< Updated upstream
                     break;
                 case 5:
                     Listázás(ref file);
+=======
+>>>>>>> Stashed changes
                     break;
                 default:
                     Console.WriteLine("Hibás adat!");
                     Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
-                    break;
+                    goto start;
             }
 =======
             
