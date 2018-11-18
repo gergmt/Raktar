@@ -39,6 +39,25 @@ namespace Raktar
             int valasztas = int.Parse(Console.ReadLine());
             string[] file = File.ReadAllLines("adatok.csv");
 
+            switch (valasztas)
+            {
+                case 1:
+                    Torles();
+                    break;
+                case 2:
+                    Modositas();
+                    break;
+                case 3:
+                    Letrehozas();
+                    break;
+                case 4:
+                    Kereses(ref file[]);
+                    break;
+                default:
+                    Console.WriteLine("Hibás adat!");
+                    Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                    break;
+            }
 
         }
 
