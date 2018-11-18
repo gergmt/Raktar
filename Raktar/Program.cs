@@ -47,12 +47,12 @@ namespace Raktar
             {
                 if (file[i].Contains(targyNev))
                 {
+                    Console.Clear();
                     Console.WriteLine("A tárgy adatai:");
                     Console.WriteLine(file[i]);
-                }
-
+                } 
             }
-                
+            Console.ReadKey();
           
         }
 
@@ -87,8 +87,11 @@ namespace Raktar
                     Listázás(ref file);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Hibás adat!");
                     Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                    Console.ReadKey();
+                    Console.Clear();
                     goto start;
             }
 
