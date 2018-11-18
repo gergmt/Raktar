@@ -21,6 +21,13 @@ namespace Raktar
         {
 
         }
+        static void Listázás(string fajl[])
+        {
+            for (int i = 0; i <fajl.Length ; i++)
+            {
+                Console.WriteLine(fajl[i]);
+            }
+        }
         static void Kereses(ref string[] file)
         {
             for (int i = 0; i < file.Length; i++)
@@ -36,8 +43,10 @@ namespace Raktar
             Console.WriteLine("2. Módosítás");
             Console.WriteLine("3. Létrehozás");
             Console.WriteLine("4. Keresés");
+            Console.WriteLine("5. Listázás");
             int valasztas = int.Parse(Console.ReadLine());
             string[] file = File.ReadAllLines("adatok.csv");
+<<<<<<< Updated upstream
 
             switch (valasztas)
             {
@@ -51,13 +60,19 @@ namespace Raktar
                     Letrehozas();
                     break;
                 case 4:
-                    Kereses(ref file[]);
+                    Kereses(ref file);
+                    break;
+                case 5:
+                    Listázás(ref file);
                     break;
                 default:
                     Console.WriteLine("Hibás adat!");
                     Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
                     break;
             }
+=======
+            
+>>>>>>> Stashed changes
 
         }
 
