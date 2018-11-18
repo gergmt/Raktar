@@ -24,11 +24,11 @@ namespace Raktar
 
         }
 
-        static void Listázás(string fajl[])
+        static void Listázás(ref string[] file)
         {
-            for (int i = 0; i <fajl.Length ; i++)
+            for (int i = 0; i <file.Length ; i++)
             {
-                Console.WriteLine(fajl[i]);
+                Console.WriteLine(file[i]);
             }
         }
 
