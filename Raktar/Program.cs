@@ -42,6 +42,7 @@ namespace Raktar
                 if (file[i].Contains(targyNev))
                 {
                     Console.WriteLine("A tárgy adatai:");
+                    Console.WriteLine(file[i]);
                 }
 
             }
@@ -59,7 +60,7 @@ namespace Raktar
             Console.WriteLine("4. Keresés");
             Console.WriteLine("5. Listázás");
             int valasztas = int.Parse(Console.ReadLine());
-            string[] file = File.ReadAllLines(@"\\Raktar\\adatok.csv");
+            string[] file = File.ReadAllLines(@"D:\Raktar\\Raktar\\adatok.csv");
 
 
             switch (valasztas)
