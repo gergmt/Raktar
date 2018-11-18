@@ -24,11 +24,17 @@ namespace Raktar
 
         }
 
+
+       
+
         static void Listázás(ref string[] file)
+
         {
             for (int i = 0; i <file.Length ; i++)
             {
+                Console.Clear();
                 Console.WriteLine(file[i]);
+                Console.ReadKey();
             }
         }
 
@@ -60,7 +66,7 @@ namespace Raktar
             Console.WriteLine("4. Keresés");
             Console.WriteLine("5. Listázás");
             int valasztas = int.Parse(Console.ReadLine());
-            string[] file = File.ReadAllLines(@"D:\Raktar\\Raktar\\adatok.csv");
+            string[] file = File.ReadAllLines("adatok.csv");
 
 
             switch (valasztas)
