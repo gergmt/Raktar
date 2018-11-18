@@ -21,19 +21,29 @@ namespace Raktar
         {
 
         }
-        static void Kereses()
+        static void Kereses(ref string[] file)
         {
-
+            for (int i = 0; i < file.Length; i++)
+            {
+                Console.WriteLine("Kérem írja be a keresendő tárgy nevét");
+                string targyNev = Console.ReadLine();
+            }
         }
         static void Main(string[] args)
         {
             Console.WriteLine("Kérem üsse be a parancs kódját");
-            Console.WriteLine("1.Törlés");
-            Console.WriteLine("2.Módosítás");
-            Console.WriteLine("3.Létrehozás");
-            Console.WriteLine("4.Keresés");
+            Console.WriteLine("1. Törlés");
+            Console.WriteLine("2. Módosítás");
+            Console.WriteLine("3. Létrehozás");
+            Console.WriteLine("4. Keresés");
             int valasztas = int.Parse(Console.ReadLine());
             string[] file = File.ReadAllLines("adatok.csv");
+
+
         }
+
+
+
+
     }
 }
