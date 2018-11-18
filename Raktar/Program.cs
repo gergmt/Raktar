@@ -33,14 +33,20 @@ namespace Raktar
         }
 
         static void Kereses(ref string[] file)
-        {
-            for (int i = 0; i < file.Length; i++)
-            {
+        { 
                 Console.Clear();
                 Console.WriteLine("Kérem írja be a keresendő tárgy nevét");
                 string targyNev = Console.ReadLine();
+            for (int i = 0; i < file.Length; i++)
+            {
+                if (file[i].Contains(targyNev))
+                {
+                    Console.WriteLine("A tárgy adatai:");
+                }
 
             }
+                
+          
         }
 
         static void Main(string[] args)
@@ -53,7 +59,7 @@ namespace Raktar
             Console.WriteLine("4. Keresés");
             Console.WriteLine("5. Listázás");
             int valasztas = int.Parse(Console.ReadLine());
-            string[] file = File.ReadAllLines("adatok.csv");
+            string[] file = File.ReadAllLines(@"\\Raktar\\adatok.csv");
 
 
             switch (valasztas)
