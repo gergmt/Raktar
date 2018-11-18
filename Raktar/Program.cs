@@ -41,12 +41,12 @@ namespace Raktar
             {
                 if (file[i].Contains(targyNev))
                 {
+                    Console.Clear();
                     Console.WriteLine("A tárgy adatai:");
                     Console.WriteLine(file[i]);
-                }
-
+                } 
             }
-                
+            Console.ReadKey();
           
         }
 
@@ -60,7 +60,7 @@ namespace Raktar
             Console.WriteLine("4. Keresés");
             Console.WriteLine("5. Listázás");
             int valasztas = int.Parse(Console.ReadLine());
-            string[] file = File.ReadAllLines(@"D:\Raktar\\Raktar\\adatok.csv");
+            string[] file = File.ReadAllLines("adatok.csv");
 
 
             switch (valasztas)
@@ -81,8 +81,11 @@ namespace Raktar
                     Listázás(ref file);
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Hibás adat!");
                     Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                    Console.ReadKey();
+                    Console.Clear();
                     goto start;
             }
 
