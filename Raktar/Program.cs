@@ -11,6 +11,7 @@ namespace Raktar
     {
         static void Torles(ref string[] file)
         {
+            Console.Clear();
             Console.WriteLine("Adja meg a termék nevét!");
             string termekNev = Console.ReadLine();
             for (int i = 0; i < file.Length; i++)
