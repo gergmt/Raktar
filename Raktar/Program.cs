@@ -9,9 +9,28 @@ namespace Raktar
 {
     class Program
     {
-        static void Torles()
+        static void Torles(ref string[] file)
         {
+            Console.WriteLine("Adja meg a termék nevét!");
+            string termekNev = Console.ReadLine();
+            for (int i = 0; i < file.Length; i++)
+            {
+                if (file[i].Contains(termekNev))
+                {
+                    file[i] = "";
+                    
+                }
+                
+                
 
+            }
+            StreamWriter torleselemek = new StreamWriter("adatok.csv");
+            for (int i = 0; i <file.Length; i++)
+            {
+                torleselemek.WriteLine(file[i]);
+            }
+
+            torleselemek.Close();
         }
 
         static void Modositas()
@@ -19,9 +38,18 @@ namespace Raktar
 
         }
 
-        static void Letrehozas()
+        static void Letrehozas(ref string[] file)
         {
+            Console.Clear();
+            Console.WriteLine("Kérem adja meg a termék azonosítóját!");
+            string id = Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("Kérem adja meg a termék nevét!");
+            string nev = Console.ReadLine();
+            Console.WriteLine("Kérem adja meg a termék darabszámát!");
+            string darab = Console.ReadLine();
 
+            File.AppendAllLines("adatok.csv", new[] { id + ";" + nev + ";" + darab });
         }
 
 
@@ -30,12 +58,14 @@ namespace Raktar
         static void Listázás(ref string[] file)
 
         {
+            Console.Clear();
             for (int i = 0; i <file.Length ; i++)
             {
-                Console.Clear();
+               
                 Console.WriteLine(file[i]);
-                Console.ReadKey();
+             
             }
+            Console.ReadKey();
         }
 
         static void Kereses(ref string[] file)
@@ -53,47 +83,64 @@ namespace Raktar
                 } 
             }
             Console.ReadKey();
+           
           
         }
 
         static void Main(string[] args)
         {
-            start:
-            Console.WriteLine("Kérem üsse be a parancs kódját");
-            Console.WriteLine("1. Törlés");
-            Console.WriteLine("2. Módosítás");
-            Console.WriteLine("3. Létrehozás");
-            Console.WriteLine("4. Keresés");
-            Console.WriteLine("5. Listázás");
-            int valasztas = int.Parse(Console.ReadLine());
-            string[] file = File.ReadAllLines("adatok.csv");
-
-
-            switch (valasztas)
+        start:
+            Console.Clear();
+            if (File.Exists("adatok.csv"))
             {
-                case 1:
-                    Torles();
-                    break;
-                case 2:
-                    Modositas();
-                    break;
-                case 3:
-                    Letrehozas();
-                    break;
-                case 4:
-                    Kereses(ref file);
-                    break;
-                case 5:
-                    Listázás(ref file);
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Hibás adat!");
-                    Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
-                    Console.ReadKey();
-                    Console.Clear();
-                    goto start;
+
+
+                Console.WriteLine("Kérem üsse be a parancs kódját");
+                Console.WriteLine("1. Törlés");
+                Console.WriteLine("2. Módosítás");
+                Console.WriteLine("3. Létrehozás");
+                Console.WriteLine("4. Keresés");
+                Console.WriteLine("5. Listázás");
+                int valasztas = int.Parse(Console.ReadLine());
+                string[] file = File.ReadAllLines("adatok.csv");
+
+
+                switch (valasztas)
+                {
+                    case 1:
+                        Torles(ref file);
+                        break;
+                    case 2:
+                        Modositas();
+                        break;
+                    case 3:
+                        Letrehozas(ref file);
+                        break;
+                    case 4:
+                        Kereses(ref file);
+                        break;
+                    case 5:
+                        Listázás(ref file);
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Hibás adat!");
+                        Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+                goto start;
             }
+        else
+            {
+                StreamWriter Letrehozas = new StreamWriter("adatok.csv");
+                Letrehozas.WriteLine("345;Tej;512");
+                Letrehozas.WriteLine("412;Vaj;0");
+                Letrehozas.Close();
+                goto start;
+            }
+        
 
         }
 
