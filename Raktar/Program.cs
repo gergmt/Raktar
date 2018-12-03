@@ -12,21 +12,21 @@ namespace Raktar
         static void Torles(ref string[] file)
         {
             Console.Clear();
-            Console.WriteLine("Adja meg a termék nevét!");
+            Console.Write("Adja meg a termék nevét: ");
             string termekNev = Console.ReadLine();
             for (int i = 0; i < file.Length; i++)
             {
                 if (file[i].Contains(termekNev))
                 {
                     file[i] = "";
-                    
+
                 }
-                
-                
+
+
 
             }
             StreamWriter torleselemek = new StreamWriter("adatok.csv");
-            for (int i = 0; i <file.Length; i++)
+            for (int i = 0; i < file.Length; i++)
             {
                 torleselemek.WriteLine(file[i]);
             }
@@ -34,46 +34,97 @@ namespace Raktar
             torleselemek.Close();
         }
 
-        static void Modositas()
+        static void Modositas(ref string[] file)
         {
-
+            Console.Clear();
+            Console.Write("Kérem a termék azonosítóját: ");
+            string azon = Console.ReadLine();
+            bool hibasAdat = true;
+            StreamWriter kiIras = new StreamWriter("adatok.csv");
+            for (int i = 0; i < file.Length; i++)
+            {
+                string[] splitelt = file[i].Split(';');
+                if (splitelt[0]==azon)
+                {
+                    hibasAdat = false;
+                    Console.Clear();
+                    Console.WriteLine("A termék adatai: " + splitelt[0] + " " + splitelt[1] + " " + splitelt[2]);
+                    Console.Write("Mit szeretne módosítani?");
+                    Console.WriteLine();
+                    Console.WriteLine("1. Név");
+                    Console.WriteLine("2. Mennyiség");
+                    int modositasSzama = int.Parse(Console.ReadLine());
+                    Console.Clear();
+                    switch (modositasSzama)
+                    {
+                        case 1:
+                            Console.Write("Adja meg a termék új nevét: ");
+                            string ujNev = Console.ReadLine();
+                            file[i] = splitelt[0] + ";" + ujNev + ";" + splitelt[2];
+                            for (int j = 0; j < file.Length; j++)
+                            {
+                                kiIras.WriteLine(file[j]);
+                            }
+                            kiIras.Close();
+                            break;
+                        case 2:
+                            //Ezt csináld meg
+                            break;
+                    default:
+                            Console.Clear();
+                            Console.WriteLine("Hibás adat!");
+                            Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                            Console.ReadKey();
+                            Console.Clear();
+                            break;
+                    }
+                }
+            }
+            if (hibasAdat)
+            {
+                Console.Clear();
+                Console.WriteLine("Nincs ilyen azonosítóval ellátott termék!");
+                Console.WriteLine("(Nyomjon meg bármilyen gombot a visszatéréshez)");
+                Console.ReadKey();
+            }
         }
 
         static void Letrehozas(ref string[] file)
         {
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a termék azonosítóját!");
+            Console.Write("Kérem adja meg a termék azonosítóját: ");
             string id = Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("Kérem adja meg a termék nevét!");
+            Console.Write("Kérem adja meg a termék nevét: ");
             string nev = Console.ReadLine();
-            Console.WriteLine("Kérem adja meg a termék darabszámát!");
+            Console.Clear();
+            Console.Write("Kérem adja meg a termék darabszámát: ");
             string darab = Console.ReadLine();
 
             File.AppendAllLines("adatok.csv", new[] { id + ";" + nev + ";" + darab });
         }
 
 
-       
+
 
         static void Listázás(ref string[] file)
 
         {
             Console.Clear();
-            for (int i = 0; i <file.Length ; i++)
+            for (int i = 0; i < file.Length; i++)
             {
-               
+
                 Console.WriteLine(file[i]);
-             
+
             }
             Console.ReadKey();
         }
 
         static void Kereses(ref string[] file)
-        { 
-                Console.Clear();
-                Console.WriteLine("Kérem írja be a keresendő tárgy nevét");
-                string targyNev = Console.ReadLine();
+        {
+            Console.Clear();
+            Console.Write("Kérem írja be a keresendő tárgy nevét: ");
+            string targyNev = Console.ReadLine();
             for (int i = 0; i < file.Length; i++)
             {
                 if (file[i].Contains(targyNev))
@@ -81,11 +132,11 @@ namespace Raktar
                     Console.Clear();
                     Console.WriteLine("A tárgy adatai:");
                     Console.WriteLine(file[i]);
-                } 
+                }
             }
             Console.ReadKey();
-           
-          
+
+
         }
 
         static void Main(string[] args)
@@ -112,7 +163,7 @@ namespace Raktar
                         Torles(ref file);
                         break;
                     case 2:
-                        Modositas();
+                        Modositas(ref file);
                         break;
                     case 3:
                         Letrehozas(ref file);
@@ -133,7 +184,7 @@ namespace Raktar
                 }
                 goto start;
             }
-        else
+            else
             {
                 StreamWriter Letrehozas = new StreamWriter("adatok.csv");
                 Letrehozas.WriteLine("345;Tej;512");
@@ -141,7 +192,7 @@ namespace Raktar
                 Letrehozas.Close();
                 goto start;
             }
-        
+
 
         }
 
