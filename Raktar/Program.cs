@@ -68,7 +68,18 @@ namespace Raktar
                             kiIras.Close();
                             break;
                         case 2:
-                            //Ezt csináld meg
+                            //Ezt csináld meg.
+                            Console.Write("Adja meg a termék új mennyiségét: ");
+                            string ujMennyiseg = Console.ReadLine();
+                            file[i] = splitelt[0] + ";" + splitelt[1] + ";" + ujMennyiseg;
+                            for (int j = 0; j < file.Length; j++)
+                            {
+                                kiIras.WriteLine(file[j]);
+                            }
+                            kiIras.Close();
+
+
+
                             break;
                     default:
                             Console.Clear();
