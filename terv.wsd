@@ -1,6 +1,6 @@
 @startuml
 start
-if (1) then (igen)
+if (1) then (igen) 
     :Törlés;
 elseif (2) then (igen)
     :Módosítás;
